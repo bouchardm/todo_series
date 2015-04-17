@@ -1,0 +1,27 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'todo_series/css/foundation.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'todo_series/css/normalize.css' %}" />
+
+<dl class="sub-nav">
+    <dt>Filter:</dt>
+    <dd class="active"><a href="#">All</a></dd>
+    <dd><a href="#">Active</a></dd>
+    <dd><a href="#">Pending</a></dd>
+    <dd class="hide-for-small-only"><a href="#">Suspended</a></dd>
+</dl>
+
+<div class="row">
+    <div class="large-12 columns">
+
+        {% if list_series %}
+        <ul>
+            {% for serie in list_series %}
+            <li><a href="{% url 'detail' serie.id %}">{{ serie.title }}</a></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>Pas de séries disponible</p>
+        {% endif %}
+    </div>
+</div>

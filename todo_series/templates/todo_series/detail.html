@@ -1,0 +1,16 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'todo_series/css/foundation.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'todo_series/css/normalize.css' %}" />
+
+<div class="row">
+    <div class="large-12 columns">
+
+        <h1>{{ serie.title }}</h1>
+        <ul>
+            {% for saison in serie.saison_set.all %}
+            <li><a href="{% url 'saison' serie.id saison.saison_number %}">Saison {{ saison.saison_number }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
