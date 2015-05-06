@@ -29,7 +29,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Saison',
             fields=[
-                ('saison_number', models.IntegerField(default=0, serialize=False, primary_key=True)),
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('saison_number', models.IntegerField(default=0, serialize=False)),
                 ('movie', models.ForeignKey(to='todo_series.Movie')),
             ],
         ),

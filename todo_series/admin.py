@@ -20,7 +20,8 @@ class SaisonAdmin(admin.ModelAdmin):
     inlines = [EpisodeInline]
 
 class EpisodeAdmin(admin.ModelAdmin):
-    fields = ['episode_name']
+    fields = ['episode_name', 'seen', 'release_date']
+    list_display = ['name', 'isSeen', 'isReleased']
 
 admin.site.register(Movie, MovieAdmin)
 admin.site.register(Saison, SaisonAdmin)

@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
+from django.views import generic
 from .models import Movie, Saison
 
 
@@ -7,7 +8,6 @@ def index(request):
     list_series = Movie.objects.all()[:5]
     context = {'list_series': list_series}
     return render(request, 'todo_series/index.html', context)
-
 
 def detail(request, serie_id):
     serie = get_object_or_404(Movie, pk=serie_id)
