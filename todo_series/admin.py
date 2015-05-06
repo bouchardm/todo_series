@@ -20,6 +20,7 @@ class SaisonAdmin(admin.ModelAdmin):
     inlines = [EpisodeInline]
 
 class EpisodeAdmin(admin.ModelAdmin):
+    # todo pas trop beau
     fields = ['episode_name', 'seen', 'release_date']
     list_display = ['name', 'isSeen', 'isReleased']
 

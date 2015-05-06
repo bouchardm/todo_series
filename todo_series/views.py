@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.views import generic
 from .models import Movie, Saison
 
+# todo make a lot better (use generic class with template)
 
 def index(request):
     list_series = Movie.objects.all()[:5]

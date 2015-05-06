@@ -8,6 +8,8 @@ from django.dispatch import receiver
 from lxml import html
 import requests
 
+# todo change movie for something like Media
+# todo géré les films aussi
 class Movie(models.Model):
     imdb_id = models.CharField(max_length=200)
     title = models.CharField(max_length=200, default='No title', blank=True)
@@ -31,6 +33,7 @@ class Episode(models.Model):
     def __str__(self):
         return self.saison.movie.title + ' - Saison ' + str(self.saison.saison_number) + ' - Episode ' + self.episode_name
 
+    # todo make a lot better (passer directement par __str__)
     def name(self):
         return self.__str__()
 
@@ -74,6 +77,7 @@ def update_serie(sender, instance, **kwargs):
 
             for name, date in zip(episode_list_name, episode_list_date):
                 release_date = None
+                # todo make a lot better
                 try:
                     release_date = datetime.strptime(date.strip(), '%d %b. %Y')
                 except ValueError:
@@ -84,7 +88,8 @@ def update_serie(sender, instance, **kwargs):
                 except ValueError:
                     pass
 
-                episodes = Episode.objects.filter(saison=new_saison, episode_name=name);
+                episodes = Episode.objects.filter(saison=new_saison, episode_name=name)
+                # todo make a lot better
                 if episodes.__len__() == 0:
                     episode = Episode(saison=new_saison, episode_name=name)
                 else:
