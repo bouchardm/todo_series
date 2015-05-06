@@ -50,6 +50,7 @@ class Episode(models.Model):
             return self.release_date <= date.today()
 
     isReleased.admin_order_field = 'release_date'
+    # todo faire qu'on peux cliquer sur le boolean
     isReleased.boolean = True
     isReleased.short_description = 'Est sortie?'
 
@@ -88,11 +89,13 @@ def update_serie(sender, instance, **kwargs):
                 except ValueError:
                     pass
 
+                # todo make a lot better (utilisé un get???)
                 episodes = Episode.objects.filter(saison=new_saison, episode_name=name)
                 # todo make a lot better
                 if episodes.__len__() == 0:
                     episode = Episode(saison=new_saison, episode_name=name)
                 else:
+                    # todo make a lot better (juste ne pas faire ca [0])
                     episode = episodes[0]
                     episode.release_date = release_date
 
